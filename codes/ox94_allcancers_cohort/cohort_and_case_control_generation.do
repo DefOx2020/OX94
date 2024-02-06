@@ -231,7 +231,7 @@ save "P:\OX94\OX94_backup_Dec_2023\ox94\Data\OX94_full_cohort_clean_final_v2.dta
 use "P:\OX94\OX94_backup_Dec_2023\ox94\Data\OX94_full_cohort_clean_final_revised_Dec_2023_v2.dta", clear
 
 
-gen case=1 if any_cancer_source==1		
+gen case=1 if any_cancer_source==1	////replace to cancer_type=X for case-control generation of each cancer subtype	
 	tab case
 	
 	collapse (sum) case, by(study_practice)
