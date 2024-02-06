@@ -1,4 +1,29 @@
+************************************************************************************
+* Project: OX94- CTYA cancer early clinical features
+* Authors: Defne Saatci 
+* Date: 22/12/2021 - 01/01/2024
+* Version: 1.0
+*
+* 
+* Input file: multiple, from OX94 projects
+* Output file: log file;
+*      
+*				        
+********************************************************************************
 
+
+
+********************************************************************************
+*     TABLE OF CONTENTS:  
+*     Multiple Imputation
+*     Multiple Imputation Diagnostics 
+********************************************************************************
+
+log using "C:\Users\Defne Saatci.QRESEARCH\Downloads\ox94\log\cleaning_v2_DS.smcl", replace 
+
+********************************************************************************
+*                   1) MULTIPLE IMPUTATION		                         
+********************************************************************************
 
 use "P:\OX94\OX94_backup_Dec_2023\ox94\Data\OX94_casecontrol_master_v4_Dec_2023", clear
  
@@ -15,6 +40,12 @@ timer off 1
 timer list 
 
 save "P:\OX94\OX94_backup_Dec_2023\ox94\Data\OX94_casecontrol_master_imputed_v2_Dec_23", replace
+
+
+
+********************************************************************************
+*                   1) MULTIPLE IMPUTATION	DIAGNOSTICS                         
+********************************************************************************
 
 use "P:\OX94\OX94_backup_Dec_2023\ox94\Data\OX94_casecontrol_master_imputed_v2_Dec_23", clear
 
