@@ -53,13 +53,5 @@ qui mi xeq: generate byte mis_ethnic= missing(ethnic_2cat)
 qui mi xeq: generate byte mis_town=missing(town_quint)
 mi register regular mis_ethnic mis_town
 
-//1) check observed over imputed values 
+// check observed over imputed values 
 mi xeq 1/25: tab ethnic_2cat if mis_ethnic==0; tab ethnic_2cat if mis_ethnic==1
-
-//2) check specification error / influential points 
-use "P:\OX94\OX94_backup_Dec_2023\ox94\Data\OX94_casecontrol_master_imputed_v2_Dec_23_final", clear
-
-mi estimate, or level(95) saving(myestsave, replace): clogit cancer_case i.symptom_1 i.symptom_2 i.symptom_3 i.symptom_5 i.symptom_6 i.symptom_7 i.symptom_8 i.symptom_9 i.symptom_10  i.symptom_12 i.symptom_13 i.symptom_18 i.symptom_19 i.symptom_21 i.symptom_22 i.symptom_23 i.symptom_29 i.symptom_30 i.symptom_31 i.symptom_36 i.symptom_37 i.symptom_38 i.symptom_40 i.symptom_48 i.symptom_49 i.symptom_51 i.symptom_52 i.symptom_53 i.symptom_54 i.symptom_56 i.town_quint i.ethnic_2cat i.symptom_29##i.symptom_2, group(setid)
-mi predict _hat using myestsave, xb
-mi passive: gen _hatsq=_hat*_hat
-mi estimate: clogit cancer_case _hat _hatsq, group(setid)
